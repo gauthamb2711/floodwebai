@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────────
+   AI FloodGuard Design System
+   Deep ocean blues, electric cyan, emergency amber & crimson
+────────────────────────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    /* Core palette – deep ocean blues */
+    --background: 220 30% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 220 28% 9%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 220 28% 9%;
+    --popover-foreground: 210 40% 96%;
+
+    /* Primary: electric cyan */
+    --primary: 188 100% 48%;
+    --primary-foreground: 220 30% 6%;
+
+    /* Secondary: ocean blue */
+    --secondary: 214 60% 20%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 220 25% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 188 100% 48%;
+    --accent-foreground: 220 30% 6%;
+
+    /* Alerts */
+    --destructive: 4 86% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 14%;
+    --input: 220 25% 14%;
+    --ring: 188 100% 48%;
+
+    --radius: 0.75rem;
+
+    /* Custom brand tokens */
+    --cyan: 188 100% 48%;
+    --cyan-glow: 188 100% 60%;
+    --ocean: 214 70% 18%;
+    --ocean-deep: 220 50% 10%;
+    --risk-low: 142 70% 45%;
+    --risk-medium: 38 92% 50%;
+    --risk-high: 4 86% 58%;
+    --risk-critical: 0 100% 50%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(188 100% 48%), hsl(220 80% 60%));
+    --gradient-ocean: linear-gradient(180deg, hsl(220 50% 10%), hsl(220 30% 6%));
+    --gradient-card: linear-gradient(135deg, hsl(220 28% 9%), hsl(220 28% 12%));
+    --gradient-danger: linear-gradient(135deg, hsl(4 86% 58%), hsl(30 90% 55%));
+    --gradient-safe: linear-gradient(135deg, hsl(142 70% 45%), hsl(160 60% 40%));
+
+    --shadow-glow: 0 0 30px hsl(188 100% 48% / 0.3);
+    --shadow-card: 0 4px 24px hsl(220 30% 3% / 0.6);
+    --shadow-danger: 0 0 20px hsl(4 86% 58% / 0.4);
+
+    --sidebar-background: 220 30% 7%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 188 100% 48%;
+    --sidebar-primary-foreground: 220 30% 6%;
+    --sidebar-accent: 220 25% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 220 25% 14%;
+    --sidebar-ring: 188 100% 48%;
+  }
+
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 220 30% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 8%;
+
+    --primary: 188 80% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 92%;
+    --secondary-foreground: 220 30% 8%;
+
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 20% 45%;
+
+    --accent: 188 80% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 4 86% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 30% 88%;
+    --input: 214 30% 88%;
+    --ring: 188 80% 38%;
+
+    --ocean: 210 40% 94%;
+    --ocean-deep: 210 40% 97%;
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 97%));
+    --shadow-card: 0 4px 24px hsl(220 30% 10% / 0.1);
+    --shadow-glow: 0 0 30px hsl(188 80% 38% / 0.2);
+
+    --sidebar-background: 210 40% 97%;
+    --sidebar-foreground: 220 30% 8%;
+    --sidebar-primary: 188 80% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 92%;
+    --sidebar-accent-foreground: 220 30% 8%;
+    --sidebar-border: 214 30% 88%;
+    --sidebar-ring: 188 80% 38%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--muted)); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }
+
+/* ── Leaflet map fix ── */
+.leaflet-container {
+  background: hsl(220 40% 8%);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Glow animations ── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px hsl(188 100% 48% / 0.4); }
+  50% { box-shadow: 0 0 30px hsl(188 100% 48% / 0.8), 0 0 60px hsl(188 100% 48% / 0.4); }
+}
+
+@keyframes pulse-danger {
+  0%, 100% { box-shadow: 0 0 10px hsl(4 86% 58% / 0.4); }
+  50% { box-shadow: 0 0 30px hsl(4 86% 58% / 0.8), 0 0 60px hsl(4 86% 58% / 0.4); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes rain {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@keyframes alert-slide {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scan-line {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes counter-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-pulse-danger { animation: pulse-danger 1.5s ease-in-out infinite; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-alert-slide { animation: alert-slide 0.5s ease-out; }
+.animate-counter { animation: counter-up 0.6s ease-out forwards; }
+
+/* ── Glassmorphism cards ── */
+.glass-card {
+  background: hsl(220 28% 9% / 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid hsl(188 100% 48% / 0.15);
+}
+
+.glass-card-light {
+  background: hsl(0 0% 100% / 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid hsl(188 80% 38% / 0.2);
+}
+
+/* ── Risk meter ── */
+.risk-meter-track {
+  background: linear-gradient(90deg,
+    hsl(142 70% 45%) 0%,
+    hsl(38 92% 50%) 50%,
+    hsl(4 86% 58%) 75%,
+    hsl(0 100% 45%) 100%
+  );
+  border-radius: 9999px;
+  height: 12px;
+}
+
+/* ── Rain particles ── */
+.rain-particle {
+  position: absolute;
+  width: 2px;
+  border-radius: 1px;
+  background: linear-gradient(180deg, hsl(188 100% 80% / 0.8), transparent);
+  animation: rain linear infinite;
+}
